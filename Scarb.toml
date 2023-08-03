@@ -1,9 +1,17 @@
 [package]
 name = "cairo_json"
 version = "0.1.0"
+authors = ["Tarik Kaced <tarik.kaced@proton.me>"]
+license = "Apache-2.0"
+license-file = "LICENSE"
+keywords = ["json", "cairo", "starknet", "carbonable"]
+homepage = "https://github.com/carbonable-labs/cairo-json"
 
 [scripts]
 run-lib = "cairo-run src/lib.cairo"
+
+[lib]
+name = "cairo_json"
 
 [[target.starknet-contract]]
 sierra = true
