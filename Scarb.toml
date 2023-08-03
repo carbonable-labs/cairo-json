@@ -1,5 +1,5 @@
 [package]
-name = "libjson"
+name = "cairo_json"
 version = "0.1.0"
 
 [scripts]
