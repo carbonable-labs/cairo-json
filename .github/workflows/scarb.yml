@@ -1,0 +1,14 @@
+name: Scarb Test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: software-mansion/setup-scarb@v1
+        with:
+          scarb-version: "0.5.1"
+      - run: scarb fmt --check
+      - run: scarb test
