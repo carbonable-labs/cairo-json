@@ -1,7 +1,7 @@
 use debug::PrintTrait;
 use clone::Clone;
 use array::{ArrayTrait, SpanTrait};
-use libjson::utils::print_felt_span;
+use cairo_json::utils::print_felt_span;
 
 #[derive(Drop, Serde)]
 struct Json {

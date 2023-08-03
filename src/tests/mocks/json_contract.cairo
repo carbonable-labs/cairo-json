@@ -1,8 +1,14 @@
+#[starknet::interface]
+trait IJsonTest<TContractState> {
+    fn test(self: @TContractState) -> Span<felt252>;
+}
+
+
 #[starknet::contract]
 mod JsonTest {
     use array::{ArrayTrait, SpanTrait};
     use serde::Serde;
-    use libjson::libjson::simple_json::{Json, JsonTrait};
+    use cairo_json::simple_json::{Json, JsonTrait};
 
     #[storage]
     struct Storage {}
@@ -30,32 +36,4 @@ mod JsonTest {
             metadata
         }
     }
-}
-
-use starknet::syscalls::deploy_syscall;
-use core::{TryInto};
-use option::OptionTrait;
-use array::{SpanTrait, ArrayTrait};
-use core::result::ResultTrait;
-
-use libjson::utils::print_felt_span;
-use libjson::libjson::interface::{IJsonTestDispatcher, IJsonTestDispatcherTrait};
-
-fn deploy() -> IJsonTestDispatcher {
-    let (address, _) = deploy_syscall(
-        JsonTest::TEST_CLASS_HASH.try_into().unwrap(), 0, ArrayTrait::new().span(), false
-    )
-        .unwrap();
-
-    return IJsonTestDispatcher { contract_address: address };
-}
-
-#[test]
-#[available_gas(2000000)]
-fn test_Initialize() {
-    let JsonTest = deploy();
-    let mut json_data: Span<felt252> = JsonTest.test();
-    print_felt_span(json_data);
-
-    assert(json_data.at(json_data.len() - 3) == @'Tony', 'Json String Error');
 }
