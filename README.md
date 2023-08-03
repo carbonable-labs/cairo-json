@@ -13,30 +13,24 @@
 
 ## About
 
-Cairo-json is a JSON library written in Cairo 0.10. It is useful for encoding and outputting JSON objects for Starknet such as Metadata.
+Cairo-json is a JSON library written in Cairo. It is useful for encoding and outputting JSON objects for Starknet such as Metadata.
 
 ## Getting Started
 
-### 📦 Prerequisites
+### 📦 Requirements
 
-- [protostar](https://github.com/software-mansion/protostar)
-
-### 🎉 Install
-
-```bash
-make install
-```
+- [asdf-scarb](https://github.com/software-mansion/asdf-scarb)
 
 ### ⛏️ Compile
 
 ```bash
-make
+scarb build
 ```
 
-### 🌡️ Test
+## 🌡️ Test
 
 ```bash
-make test
+scarb test
 ```
 
 ### 📄 License

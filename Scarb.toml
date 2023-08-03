@@ -1,0 +1,17 @@
+[package]
+name = "libjson"
+version = "0.1.0"
+
+[scripts]
+run-lib = "cairo-run src/lib.cairo"
+
+[[target.starknet-contract]]
+sierra = true
+casm = true
+name = "compiled"
+
+[dependencies]
+starknet = ">=2.0.1"
+
+[cairo]
+sierra-replace_ids = true

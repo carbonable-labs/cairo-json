@@ -19,3 +19,6 @@ build
 
 .DS_Store
 lint.sarif
+
+#scarb
+target/
