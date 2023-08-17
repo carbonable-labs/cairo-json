@@ -82,5 +82,7 @@ fn main() {
     value.append('This is another value');
     json.add('a', value.span());
 
-    json.print();
+    let mut metadata: Array<felt252> = Default::default();
+    json.append_to_string(ref metadata);
+    metadata.print();
 }
