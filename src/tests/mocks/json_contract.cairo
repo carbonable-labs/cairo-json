@@ -54,7 +54,7 @@ mod JsonTest {
             value.append('This is another value');
 
             json.add_member('a', value.span());
-            json.add_attribute(Option::Some(DisplayType::Number), Option::None, array!['1'].span());
+            json.add_attribute(DisplayType::Number, Option::None, array!['1'].span());
             json
         }
     }
