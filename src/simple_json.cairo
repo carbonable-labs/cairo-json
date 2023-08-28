@@ -5,7 +5,7 @@ use cairo_json::utils::print_felt_span;
 
 #[derive(Drop, Serde)]
 struct Json {
-    members: Array<(felt252, Span<felt252>)>, 
+    members: Array<(felt252, Span<felt252>)>,
 }
 
 trait JsonTrait {
