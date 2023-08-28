@@ -3,6 +3,7 @@ use core::{TryInto};
 use option::OptionTrait;
 use array::{SpanTrait, ArrayTrait};
 use core::result::ResultTrait;
+use debug::PrintTrait;
 
 use cairo_json::tests::mocks::json_contract::JsonTest;
 use cairo_json::utils::print_felt_span;
@@ -27,40 +28,20 @@ fn test_simple_json() {
     assert(json_data.at(json_data.len() - 3) == @'Tony', 'Json String Error');
 }
 
-impl SpanPartialEq of PartialEq<Span<felt252>> {
-    fn eq(lhs: @Span<felt252>, rhs: @Span<felt252>) -> bool {
-        if (*lhs).len() != (*rhs).len() {
-            false
-        } else {
-            let mut lhs = *lhs;
-            let mut rhs = *rhs;
-
-            loop {
-                match lhs.pop_front() {
-                    Option::Some(x) => {
-                        if x != rhs.pop_front().unwrap() {
-                            break false;
-                        }
-                    },
-                    Option::None(()) => {
-                        break true;
-                    }
-                };
-            }
-        }
-    }
-
-    fn ne(lhs: @Span<felt252>, rhs: @Span<felt252>) -> bool {
-        return !(lhs == rhs);
-    }
-}
-
 #[test]
-#[available_gas(2000000)]
+#[available_gas(20000000)]
 fn test_json_metadata() {
     let JsonTest = deploy();
     let mut json_data: Span<felt252> = JsonTest.metadata();
-
+    let mut i = 0;
+    loop {
+        if i == 256 {
+            break;
+        }
+        i.print();
+        i += 1;
+    };
+    ('m' * 256 * 256 + 194 * 256 + 178).print();
     let expected = array![
         '{ ',
         '"',
